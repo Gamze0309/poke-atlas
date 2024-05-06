@@ -1,0 +1,185 @@
+/* @import "~bootstrap/dist/css/bootstrap.min.css"; */
+.container.pokemon-detail {
+  padding: 1% 2%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.pokemon-detail-row {
+  padding: 1% 6%;
+  border-radius: 20px;
+  border: 2px solid #eadfb4;
+  background-color: #eadfb4;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  background-color: #f9eec4;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  padding: 0px;
+  margin: 0px;
+}
+
+h4 {
+  color: #51829b;
+}
+
+.pokemon-info {
+  background-color: #f6995c;
+  border-radius: 30px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+  color: #51829b;
+  padding: 2%;
+  margin-left: 5%;
+}
+
+/* Pokemon Main */
+
+.pokemon-info.pokemon {
+  margin-bottom: 10%;
+}
+
+img {
+  width: 150px;
+  height: 150px;
+}
+
+.pokemon-image {
+  margin-top: 5%;
+}
+
+#pokemon-name-row {
+  margin-top: 5%;
+}
+
+.pokemon-detail-name {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.pokemon-detail-type-list {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.pokemon-detail-type {
+  background-color: #eadfb4;
+  padding: 1% 6%;
+  border-radius: 20px;
+  margin: 0 5px;
+}
+
+/* Pokemon Info */
+
+.pokemon-detail-description {
+  margin-top: 5%;
+}
+
+.pokemon-detail-body-list {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.pokemon-detail-body {
+  background-color: #fac6a3;
+  padding: 1% 8%;
+  border-radius: 20px;
+  margin: 0 5px;
+}
+
+.pokemon-height {
+  margin-left: 15%;
+}
+
+.pokemon-weight {
+  margin-right: 15%;
+}
+
+/* Pokemon Ability */
+
+.pokemon-info.pokemon-ability {
+  margin-bottom: 10%;
+}
+
+.pokemon-detail-ability {
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background-color: #fac6a3;
+  margin: 5% 5%;
+  padding: 5px 5px;
+}
+
+.pokemon-detail-ability.hidden-ability {
+  background-color: #ebb998;
+}
+
+/* Pokemon Statistics */
+
+.pokemon-info.pokemon-stat {
+  margin-bottom: 5%;
+}
+
+.pokemon-detail-stat {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  align-items: center;
+}
+
+.pokemon-stat-name {
+  text-align: left;
+}
+
+.pokemon-stat-number {
+  padding: 1% 2%;
+  border-radius: 20px;
+  text-align: right;
+  background-color: #fac6a3;
+}
+
+/* Pokemon Chain */
+
+.pokemon-chain-card {
+  display: grid;
+  place-items: center;
+  background-color: #9bb0c1;
+  border-radius: 20px;
+  margin: 2%;
+}
+
+.pokemon-chain-pokemon-image {
+  width: 100px;
+  height: 100px;
+  margin: 2%;
+}
+
+.pokemon-chain-pokemon-name {
+  color: #51829b;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.pokemon-chain-pokemon-type {
+  padding: 1% 8%;
+  border-radius: 20px;
+  margin: 0 5px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  color: #51829b;
+  border: 2px solid #51829b;
+  justify-content: center;
+}

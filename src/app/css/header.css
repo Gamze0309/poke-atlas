@@ -1,0 +1,22 @@
+#navbar {
+  background-color: #51829b;
+}
+
+.header-image {
+  width: 80px;
+  height: 80px;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+}
+
+#header-text {
+  margin-left: 10px;
+  color: #eadfb4;
+}
+
+.navbar-brand {
+  margin-left: 20px;
+}
