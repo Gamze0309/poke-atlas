@@ -1,5 +1,8 @@
 This is the Poke Atlas Project. It is created with Next.js, TypeScript, and Bootstrap.
 
+<img src="https://github.com/Gamze0309/poke-atlas/assets/28878225/eedc7ca7-d875-4fae-865c-913d378011b4" alt="Project Logo" width="500"/>
+<img src="https://github.com/Gamze0309/poke-atlas/assets/28878225/54c1e375-9738-46a1-bb07-6df2da3dcdf1" alt="Project Logo" width="500"/>
+
 ## Getting Started
 
 ### Recommended Software Versions
