@@ -1,29 +1,14 @@
 import "../css/main.css";
-import {
-  setSelectedPokemon,
-  setSelectedPokemonInitialState,
-} from "../redux/reducers/selectedPokemonReducer";
+import { setSelectedPokemon } from "../redux/reducers/selectedPokemonReducer";
 import { useAppDispatch } from "../hooks";
-import {
-  fetchPokemonDetailData,
-  setPokemonDetailInitialState,
-} from "../redux/reducers/pokemonDetailReducer";
-import {
-  fetchPokemonChainData,
-  setPokemonChainInitialState,
-} from "../redux/reducers/pokemonChainReducer";
+import { fetchPokemonDetailData } from "../redux/reducers/pokemonDetailReducer";
+import { fetchPokemonChainData } from "../redux/reducers/pokemonChainReducer";
 import Link from "next/link";
-import { useEffect } from "react";
 
 const PokemonCard = (pokemon: PokemonType) => {
   const dispatch = useAppDispatch();
   const pageSize = Number(process.env.NEXT_PUBLIC_POKEMON_PAGE_SIZE) || 10;
 
-  useEffect(() => {
-    dispatch(setSelectedPokemonInitialState());
-    dispatch(setPokemonDetailInitialState());
-    dispatch(setPokemonChainInitialState());
-  }, []);
   const handleClick = () => {
     dispatch(
       setSelectedPokemon({

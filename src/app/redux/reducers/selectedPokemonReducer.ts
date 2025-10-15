@@ -3,18 +3,14 @@ import axios from "axios";
 
 const getPokemonApiUrl = process.env.NEXT_PUBLIC_GET_POKEMONS_API_URL;
 
-type SelectedokemonType = {
-  pokemon: PokemonType;
+type SelectedPokemonType = {
+  pokemon: PokemonType | null;
   isLoading: boolean;
   status: string;
 };
 
-const selectedPokemonInitialState: SelectedokemonType = {
-  pokemon: {
-    name: "",
-    image: "",
-    typeList: [],
-  },
+const selectedPokemonInitialState: SelectedPokemonType = {
+  pokemon: null,
   isLoading: true,
   status: "idle",
 };
@@ -55,12 +51,10 @@ const selectedPokemonDetailSlice = createSlice({
   initialState: selectedPokemonInitialState,
   reducers: {
     setSelectedPokemon: (state, action) => {
-      state.pokemon.name = action.payload.pokemon.name;
-      state.pokemon.image = action.payload.pokemon.image;
-      state.pokemon.typeList = action.payload.pokemon.typeList;
+      state.pokemon = action.payload.pokemon;
       state.isLoading = false;
     },
-    setSelectedPokemonInitialState: (state) => {
+    clearSelectedPokemon: (state) => {
       state = selectedPokemonInitialState;
     },
   },
@@ -72,9 +66,7 @@ const selectedPokemonDetailSlice = createSlice({
     builder.addCase(fetchPokemonData.fulfilled, (state, action) => {
       state.isLoading = false;
       state.status = "success";
-      state.pokemon.name = action.payload.pokemon.name;
-      state.pokemon.image = action.payload.pokemon.image;
-      state.pokemon.typeList = action.payload.pokemon.typeList;
+      state.pokemon = action.payload.pokemon as unknown as PokemonType;
     });
     builder.addCase(fetchPokemonData.rejected, (state) => {
       state.isLoading = false;
@@ -83,7 +75,7 @@ const selectedPokemonDetailSlice = createSlice({
   },
 });
 
-export const { setSelectedPokemon, setSelectedPokemonInitialState } =
+export const { setSelectedPokemon, clearSelectedPokemon } =
   selectedPokemonDetailSlice.actions;
 
 export default selectedPokemonDetailSlice.reducer;

@@ -9,9 +9,18 @@ import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import Loading from "@/app/components/Loading";
 import { useParams } from "next/navigation";
 import { useEffect } from "react";
-import { fetchPokemonData } from "@/app/redux/reducers/selectedPokemonReducer";
-import { fetchPokemonDetailData } from "@/app/redux/reducers/pokemonDetailReducer";
-import { fetchPokemonChainData } from "@/app/redux/reducers/pokemonChainReducer";
+import {
+  clearSelectedPokemon,
+  fetchPokemonData,
+} from "@/app/redux/reducers/selectedPokemonReducer";
+import {
+  fetchPokemonDetailData,
+  setPokemonDetailInitialState,
+} from "@/app/redux/reducers/pokemonDetailReducer";
+import {
+  fetchPokemonChainData,
+  setPokemonChainInitialState,
+} from "@/app/redux/reducers/pokemonChainReducer";
 
 const PokemonDetailPage = () => {
   const param = useParams<{ pokemonName: string }>();
@@ -25,12 +34,20 @@ const PokemonDetailPage = () => {
   const pokemonChain = useAppSelector((state) => state.pokemonChainReducer);
 
   useEffect(() => {
-    if (pokemonName != "undefined" && pokemonName != pokemonData.pokemon.name) {
+    if (
+      pokemonName != "undefined" &&
+      pokemonName != pokemonData?.pokemon?.name
+    ) {
       dispatch(fetchPokemonData(pokemonName));
       dispatch(fetchPokemonDetailData(pokemonName));
       dispatch(fetchPokemonChainData(pokemonName));
     }
-  }, []);
+    return () => {
+      dispatch(clearSelectedPokemon());
+      dispatch(setPokemonDetailInitialState());
+      dispatch(setPokemonChainInitialState());
+    };
+  }, [param.pokemonName, dispatch]);
 
   return (
     <div className="container pokemon-detail">

@@ -1,6 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-import { fetchPokemonsData } from "../redux/reducers/pokemonListReducer";
+import {
+  fetchPokemonsData,
+  setPokemonListInitialState,
+} from "../redux/reducers/pokemonListReducer";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import PokemonCard from "./PokemonCard";
 import "../css/main.css";
@@ -37,6 +40,9 @@ const PokemonsList = () => {
     dispatch(fetchPokemonsData({ offset, pageSize })).then(() => {
       setIsLoading(false);
     });
+    return () => {
+      dispatch(setPokemonListInitialState());
+    };
   }, [dispatch, pageNumber]);
 
   return (
