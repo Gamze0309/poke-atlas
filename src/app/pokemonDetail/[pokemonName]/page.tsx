@@ -4,7 +4,6 @@ import PokemonAbilities from "../../components/PokemonAbilities";
 import PokemonChain from "../../components/PokemonChain";
 import PokemonStatistics from "../../components/PokemonStatistics";
 import "../../css/pokemonDetail.css";
-import withLayout from "@/app/components/withLayout";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import Loading from "@/app/components/Loading";
 import { useParams } from "next/navigation";
@@ -21,6 +20,7 @@ import {
   fetchPokemonChainData,
   setPokemonChainInitialState,
 } from "@/app/redux/reducers/pokemonChainReducer";
+import Header from "@/app/components/Header";
 
 const PokemonDetailPage = () => {
   const param = useParams<{ pokemonName: string }>();
@@ -50,39 +50,42 @@ const PokemonDetailPage = () => {
   }, [param.pokemonName, dispatch]);
 
   return (
-    <div className="container pokemon-detail">
-      <div className="row pokemon-detail-row">
-        <div className="col-md-4">
-          <h4>Pokemon</h4>
-          {pokemonData.isLoading || pokemonData.status === "fail" ? (
-            <Loading />
-          ) : (
-            <Pokemon />
-          )}
-          <h4>Abilities</h4>
-          {pokemonDetail.isLoading || pokemonDetail.status === "fail" ? (
-            <Loading />
-          ) : (
-            <PokemonAbilities />
-          )}
-        </div>
-        <div className="col-md-8">
-          <h4>Statistics</h4>
-          {pokemonDetail.isLoading || pokemonDetail.status === "fail" ? (
-            <Loading />
-          ) : (
-            <PokemonStatistics />
-          )}
-          <h4>Evolution</h4>
-          {pokemonChain.isLoading || pokemonChain.status === "fail" ? (
-            <Loading />
-          ) : (
-            <PokemonChain />
-          )}
+    <>
+      <Header />
+      <div className="container pokemon-detail">
+        <div className="row pokemon-detail-row">
+          <div className="col-md-4">
+            <h4>Pokemon</h4>
+            {pokemonData.isLoading || pokemonData.status === "fail" ? (
+              <Loading />
+            ) : (
+              <Pokemon />
+            )}
+            <h4>Abilities</h4>
+            {pokemonDetail.isLoading || pokemonDetail.status === "fail" ? (
+              <Loading />
+            ) : (
+              <PokemonAbilities />
+            )}
+          </div>
+          <div className="col-md-8">
+            <h4>Statistics</h4>
+            {pokemonDetail.isLoading || pokemonDetail.status === "fail" ? (
+              <Loading />
+            ) : (
+              <PokemonStatistics />
+            )}
+            <h4>Evolution</h4>
+            {pokemonChain.isLoading || pokemonChain.status === "fail" ? (
+              <Loading />
+            ) : (
+              <PokemonChain />
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default withLayout(PokemonDetailPage);
+export default PokemonDetailPage;

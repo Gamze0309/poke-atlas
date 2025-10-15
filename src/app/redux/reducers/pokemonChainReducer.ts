@@ -92,7 +92,9 @@ const pokemonChainSlice = createSlice({
   initialState: pokemonChainInitialState,
   reducers: {
     setPokemonChainInitialState: (state) => {
-      state = pokemonChainInitialState;
+      state.pokemons = [];
+      state.status = "idle";
+      state.isLoading = true;
     },
   },
   extraReducers: (builder) => {

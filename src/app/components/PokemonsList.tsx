@@ -18,15 +18,9 @@ const PokemonsList = () => {
 
   const pokemonData = useAppSelector((state) => state.pokemonListReducer);
   const param = useParams<{ pageNumber: string }>();
-  let pageNumber = parseInt(
-    typeof param.pageNumber === "undefined" ? "1" : param.pageNumber,
-    10
-  );
+  let pageNumber = Number(param.pageNumber ?? 1);
 
-  let pageSize = parseInt(
-    process.env.NEXT_PUBLIC_POKEMON_PAGE_SIZE || "10",
-    10
-  );
+  let pageSize = Number(process.env.NEXT_PUBLIC_POKEMON_PAGE_SIZE) || 10;
 
   if (isNaN(pageSize) || pageSize <= 0 || !Number.isInteger(pageSize)) {
     pageSize = 10;

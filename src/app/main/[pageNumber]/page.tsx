@@ -1,10 +1,15 @@
 "use client";
 import "../../css/main.css";
 import PokemonsList from "../../components/PokemonsList";
-import withLayout from "@/app/components/withLayout";
+import Header from "@/app/components/Header";
 
 const WithNumberMainPage = () => {
-  return <PokemonsList />;
+  return (
+    <>
+      <Header />
+      <PokemonsList />
+    </>
+  );
 };
 
-export default withLayout(WithNumberMainPage);
+export default WithNumberMainPage;
