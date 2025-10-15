@@ -45,8 +45,8 @@ const PokemonsList = () => {
         <Loading />
       ) : (
         <div className="row">
-          {pokemonData.pokemons?.map((pokemon: PokemonType, index: number) => (
-            <PokemonCard key={index} {...pokemon} />
+          {pokemonData.pokemons?.map((pokemon) => (
+            <PokemonCard key={pokemon.name} {...pokemon} />
           ))}
           <div className="col pagination-style">
             <Pagination totalPages={totalPages} currentPage={pageNumber} />

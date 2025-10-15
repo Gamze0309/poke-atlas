@@ -17,10 +17,7 @@ import { useEffect } from "react";
 
 const PokemonCard = (pokemon: PokemonType) => {
   const dispatch = useAppDispatch();
-  const pageSize = parseInt(
-    process.env.NEXT_PUBLIC_POKEMON_PAGE_SIZE || "10",
-    10
-  );
+  const pageSize = Number(process.env.NEXT_PUBLIC_POKEMON_PAGE_SIZE) || 10;
 
   useEffect(() => {
     dispatch(setSelectedPokemonInitialState());
@@ -52,8 +49,8 @@ const PokemonCard = (pokemon: PokemonType) => {
             <img src={pokemon.image} alt={pokemon.name} />
           </div>
           <div className="type-list">
-            {pokemon.typeList.map((type, index) => (
-              <span key={index} className="pokemon-type">
+            {pokemon.typeList.map((type) => (
+              <span key={type} className="pokemon-type">
                 {type}
               </span>
             ))}

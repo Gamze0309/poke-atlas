@@ -39,8 +39,8 @@ const PokemonChain = () => {
               alt={pokemon.name}
             />
             <p className="pokemon-chain-pokemon-name">{pokemon.name}</p>
-            {pokemon.typeList.map((type, index) => (
-              <span key={index} className="pokemon-chain-pokemon-type">
+            {pokemon.typeList.map((type) => (
+              <span key={type} className="pokemon-chain-pokemon-type">
                 {type}
               </span>
             ))}

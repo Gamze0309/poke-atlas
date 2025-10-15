@@ -11,7 +11,7 @@ const Header = () => {
             width="30"
             height="30"
             className="d-inline-block align-top header-image"
-            alt=""
+            alt="Pokéball logo"
           />
           <span className="navbar-text" id="header-text">
             Poké Atlas: Explore the Pokémon World
