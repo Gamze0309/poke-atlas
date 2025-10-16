@@ -53,6 +53,7 @@ const selectedPokemonDetailSlice = createSlice({
     setSelectedPokemon: (state, action) => {
       state.pokemon = action.payload.pokemon;
       state.isLoading = false;
+      state.status = "success";
     },
     clearSelectedPokemon: (state) => {
       state.pokemon = null;

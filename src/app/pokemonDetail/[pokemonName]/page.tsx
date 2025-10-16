@@ -42,11 +42,6 @@ const PokemonDetailPage = () => {
       dispatch(fetchPokemonDetailData(pokemonName));
       dispatch(fetchPokemonChainData(pokemonName));
     }
-    return () => {
-      dispatch(clearSelectedPokemon());
-      dispatch(setPokemonDetailInitialState());
-      dispatch(setPokemonChainInitialState());
-    };
   }, [param.pokemonName, dispatch]);
 
   return (
