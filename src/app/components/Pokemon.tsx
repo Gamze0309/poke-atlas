@@ -8,7 +8,7 @@ const Pokemon = () => {
   );
 
   return (
-    <div className="pokemon-info pokemon">
+    <div className="pokemon-info pokemon pulse-on-mount">
       <div className="row">
         <img
           className="pokemon-image"
