@@ -66,7 +66,9 @@ const pokemonListSlice = createSlice({
   initialState: pokemonListInitialState,
   reducers: {
     setPokemonListInitialState: (state) => {
-      state = pokemonListInitialState;
+      state.pokemons = [];
+      state.count = 0;
+      state.status = "idle";
     },
   },
   extraReducers: (builder) => {
@@ -76,7 +78,7 @@ const pokemonListSlice = createSlice({
       state.status = "success";
     });
     builder.addCase(fetchPokemonsData.pending, (state, action) => {
-      state.status = "failed";
+      state.status = "loading";
     });
     builder.addCase(fetchPokemonsData.rejected, (state, action) => {
       state.status = "failed";
