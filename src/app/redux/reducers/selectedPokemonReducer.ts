@@ -55,7 +55,9 @@ const selectedPokemonDetailSlice = createSlice({
       state.isLoading = false;
     },
     clearSelectedPokemon: (state) => {
-      state = selectedPokemonInitialState;
+      state.pokemon = null;
+      state.isLoading = true;
+      state.status = "idle";
     },
   },
   extraReducers: (builder) => {
