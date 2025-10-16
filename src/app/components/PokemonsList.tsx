@@ -41,7 +41,7 @@ const PokemonsList = () => {
 
   return (
     <div className="container main-container">
-      {isLoading || pokemonData.status === "fail" ? (
+      {isLoading || pokemonData.status === "failed" ? (
         <Loading />
       ) : (
         <div className="row">

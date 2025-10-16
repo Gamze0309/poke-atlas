@@ -70,7 +70,7 @@ const selectedPokemonDetailSlice = createSlice({
     });
     builder.addCase(fetchPokemonData.rejected, (state) => {
       state.isLoading = false;
-      state.status = "fail";
+      state.status = "failed";
     });
   },
 });

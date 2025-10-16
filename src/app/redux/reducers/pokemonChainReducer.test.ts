@@ -57,7 +57,7 @@ describe("pokemonChainReducer", () => {
     const action = { type: fetchPokemonChainData.rejected.type };
     const state = reducer(initialState, action);
     expect(state.isLoading).toBe(false);
-    expect(state.status).toBe("fail");
+    expect(state.status).toBe("failed");
   });
 });
 

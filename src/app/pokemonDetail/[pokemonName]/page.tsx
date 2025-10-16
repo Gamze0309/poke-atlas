@@ -56,13 +56,13 @@ const PokemonDetailPage = () => {
         <div className="row pokemon-detail-row">
           <div className="col-md-4">
             <h4>Pokemon</h4>
-            {pokemonData.isLoading || pokemonData.status === "fail" ? (
+            {pokemonData.isLoading || pokemonData.status === "failed" ? (
               <Loading />
             ) : (
               <Pokemon />
             )}
             <h4>Abilities</h4>
-            {pokemonDetail.isLoading || pokemonDetail.status === "fail" ? (
+            {pokemonDetail.isLoading || pokemonDetail.status === "failed" ? (
               <Loading />
             ) : (
               <PokemonAbilities />
@@ -70,13 +70,13 @@ const PokemonDetailPage = () => {
           </div>
           <div className="col-md-8">
             <h4>Statistics</h4>
-            {pokemonDetail.isLoading || pokemonDetail.status === "fail" ? (
+            {pokemonDetail.isLoading || pokemonDetail.status === "failed" ? (
               <Loading />
             ) : (
               <PokemonStatistics />
             )}
             <h4>Evolution</h4>
-            {pokemonChain.isLoading || pokemonChain.status === "fail" ? (
+            {pokemonChain.isLoading || pokemonChain.status === "failed" ? (
               <Loading />
             ) : (
               <PokemonChain />

@@ -109,7 +109,7 @@ const pokemonChainSlice = createSlice({
     });
     builder.addCase(fetchPokemonChainData.rejected, (state, action) => {
       state.isLoading = false;
-      state.status = "fail";
+      state.status = "failed";
     });
   },
 });

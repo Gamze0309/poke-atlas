@@ -92,7 +92,13 @@ const pokemonDetailSlice = createSlice({
   initialState: pokemonDetailInitialState,
   reducers: {
     setPokemonDetailInitialState: (state) => {
-      state = pokemonDetailInitialState;
+      state.description = "";
+      state.weight = 0;
+      state.height = 0;
+      state.abilityList = [];
+      state.baseStatList = [];
+      state.status = "idle";
+      state.isLoading = true;
     },
   },
   extraReducers: (builder) => {
@@ -105,10 +111,11 @@ const pokemonDetailSlice = createSlice({
       (state.status = "success"), (state.isLoading = false);
     });
     builder.addCase(fetchPokemonDetailData.pending, (state, action) => {
-      state.status = "fail";
+      state.isLoading = true;
+      state.status = "loading";
     });
     builder.addCase(fetchPokemonDetailData.rejected, (state, action) => {
-      state.status = "fail";
+      state.status = "failed";
     });
   },
 });

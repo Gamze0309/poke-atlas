@@ -76,10 +76,10 @@ const pokemonListSlice = createSlice({
       state.status = "success";
     });
     builder.addCase(fetchPokemonsData.pending, (state, action) => {
-      state.status = "fail";
+      state.status = "failed";
     });
     builder.addCase(fetchPokemonsData.rejected, (state, action) => {
-      state.status = "fail";
+      state.status = "failed";
     });
   },
 });
