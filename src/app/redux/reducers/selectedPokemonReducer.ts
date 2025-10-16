@@ -5,13 +5,11 @@ const getPokemonApiUrl = process.env.NEXT_PUBLIC_GET_POKEMONS_API_URL;
 
 type SelectedPokemonType = {
   pokemon: PokemonType | null;
-  isLoading: boolean;
   status: string;
 };
 
 const selectedPokemonInitialState: SelectedPokemonType = {
   pokemon: null,
-  isLoading: true,
   status: "idle",
 };
 
@@ -52,27 +50,22 @@ const selectedPokemonDetailSlice = createSlice({
   reducers: {
     setSelectedPokemon: (state, action) => {
       state.pokemon = action.payload.pokemon;
-      state.isLoading = false;
       state.status = "success";
     },
     clearSelectedPokemon: (state) => {
       state.pokemon = null;
-      state.isLoading = true;
       state.status = "idle";
     },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchPokemonData.pending, (state) => {
-      state.isLoading = true;
       state.status = "loading";
     });
     builder.addCase(fetchPokemonData.fulfilled, (state, action) => {
-      state.isLoading = false;
       state.status = "success";
       state.pokemon = action.payload.pokemon as unknown as PokemonType;
     });
     builder.addCase(fetchPokemonData.rejected, (state) => {
-      state.isLoading = false;
       state.status = "failed";
     });
   },

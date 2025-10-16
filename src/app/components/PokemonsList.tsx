@@ -1,9 +1,6 @@
 "use client";
-import { useEffect, useState } from "react";
-import {
-  fetchPokemonsData,
-  setPokemonListInitialState,
-} from "../redux/reducers/pokemonListReducer";
+import { useEffect } from "react";
+import { fetchPokemonsData } from "../redux/reducers/pokemonListReducer";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import PokemonCard from "./PokemonCard";
 import "../css/main.css";
@@ -14,9 +11,8 @@ import Loading from "./Loading";
 const PokemonsList = () => {
   const dispatch = useAppDispatch();
 
-  const [isLoading, setIsLoading] = useState(true);
-
   const pokemonData = useAppSelector((state) => state.pokemonListReducer);
+
   const param = useParams<{ pageNumber: string }>();
   let pageNumber = Number(param.pageNumber ?? 1);
 
@@ -29,23 +25,17 @@ const PokemonsList = () => {
   const totalPages = Math.ceil(pokemonData.count / pageSize);
 
   useEffect(() => {
-    setIsLoading(true);
     let offset: number = (pageNumber - 1) * pageSize;
-    dispatch(fetchPokemonsData({ offset, pageSize })).then(() => {
-      setIsLoading(false);
-    });
-    return () => {
-      dispatch(setPokemonListInitialState());
-    };
-  }, [dispatch, pageNumber]);
+    dispatch(fetchPokemonsData({ offset, pageSize }));
+  }, [pageNumber]);
 
   return (
     <div className="container main-container">
-      {isLoading || pokemonData.status === "failed" ? (
+      {pokemonData.status !== "success" ? (
         <Loading />
       ) : (
         <div className="row">
-          {pokemonData.pokemons?.map((pokemon) => (
+          {pokemonData.pokemons?.map((pokemon: PokemonType) => (
             <PokemonCard key={pokemon.name} {...pokemon} />
           ))}
           <div className="col pagination-style">

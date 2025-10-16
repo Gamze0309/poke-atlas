@@ -15,13 +15,11 @@ type EvolutionChain = {
 type PokemonChain = {
   pokemons: Array<PokemonType>;
   status: string;
-  isLoading: boolean;
 };
 
 const pokemonChainInitialState: PokemonChain = {
   pokemons: [],
   status: "idle",
-  isLoading: true,
 };
 
 export const fetchPokemonChainData = createAsyncThunk(
@@ -94,21 +92,17 @@ const pokemonChainSlice = createSlice({
     setPokemonChainInitialState: (state) => {
       state.pokemons = [];
       state.status = "idle";
-      state.isLoading = true;
     },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchPokemonChainData.fulfilled, (state, action) => {
       state.pokemons = action.payload.pokemons;
-      state.isLoading = false;
       state.status = "success";
     });
     builder.addCase(fetchPokemonChainData.pending, (state, action) => {
-      state.isLoading = true;
       state.status = "loading";
     });
     builder.addCase(fetchPokemonChainData.rejected, (state, action) => {
-      state.isLoading = false;
       state.status = "failed";
     });
   },

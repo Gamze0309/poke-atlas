@@ -12,7 +12,6 @@ const mockedAxios = axios as jest.Mocked<typeof axios>;
 describe("selectedPokemonReducer", () => {
   const initialState = {
     pokemon: null,
-    isLoading: true,
     status: "idle",
   };
 
@@ -23,7 +22,6 @@ describe("selectedPokemonReducer", () => {
   it("should handle pending state", () => {
     const action: UnknownAction = { type: fetchPokemonData.pending.type };
     const newState = reducer(initialState, action);
-    expect(newState.isLoading).toBe(true);
     expect(newState.status).toBe("loading");
   });
 
@@ -42,7 +40,6 @@ describe("selectedPokemonReducer", () => {
     };
 
     const newState = reducer(initialState, action);
-    expect(newState.isLoading).toBe(false);
     expect(newState.status).toBe("success");
     expect(newState.pokemon?.name).toBe("pikachu");
   });
@@ -50,7 +47,6 @@ describe("selectedPokemonReducer", () => {
   it("should handle rejected state", () => {
     const action: UnknownAction = { type: fetchPokemonData.rejected.type };
     const newState = reducer(initialState, action);
-    expect(newState.isLoading).toBe(false);
     expect(newState.status).toBe("failed");
   });
 
@@ -60,13 +56,11 @@ describe("selectedPokemonReducer", () => {
     });
     const newState = reducer(initialState, action);
     expect(newState.pokemon?.name).toBe("bulbasaur");
-    expect(newState.isLoading).toBe(false);
   });
 
   it("should handle clearSelectedPokemon reducer", () => {
     const modifiedState = {
       pokemon: { name: "charmander", image: "x.svg", typeList: ["fire"] },
-      isLoading: false,
       status: "success",
     };
     const action = clearSelectedPokemon();

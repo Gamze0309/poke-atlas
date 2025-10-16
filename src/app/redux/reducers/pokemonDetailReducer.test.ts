@@ -16,7 +16,6 @@ describe("pokemonDetailReducer", () => {
     abilityList: [],
     baseStatList: [],
     status: "idle",
-    isLoading: true,
   };
 
   const mockPokemonResponse = {
@@ -76,7 +75,6 @@ describe("pokemonDetailReducer", () => {
     const newState = reducer(initialState, action);
 
     expect(newState.status).toBe("success");
-    expect(newState.isLoading).toBe(false);
     expect(newState.description).toBe("English description");
     expect(newState.abilityList).toHaveLength(2);
     expect(newState.baseStatList[0].name).toBe("hp");

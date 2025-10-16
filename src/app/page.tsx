@@ -1,7 +1,6 @@
 "use client";
 import { useEffect } from "react";
 import MainPage from "./main/[pageNumber]/page";
-import Header from "./components/Header";
 
 export default function Home() {
   useEffect(() => {

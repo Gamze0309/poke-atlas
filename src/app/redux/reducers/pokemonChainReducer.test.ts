@@ -13,7 +13,6 @@ describe("pokemonChainReducer", () => {
   const initialState = {
     pokemons: [],
     status: "idle",
-    isLoading: true,
   };
 
   it("should return the initial state", () => {
@@ -24,7 +23,6 @@ describe("pokemonChainReducer", () => {
     const modifiedState = {
       pokemons: [{ name: "pikachu", image: "img.png", typeList: ["electric"] }],
       status: "success",
-      isLoading: false,
     };
     expect(reducer(modifiedState, setPokemonChainInitialState())).toEqual(
       initialState
@@ -34,7 +32,6 @@ describe("pokemonChainReducer", () => {
   it("should handle fetchPokemonChainData.pending", () => {
     const action = { type: fetchPokemonChainData.pending.type };
     const state = reducer(initialState, action);
-    expect(state.isLoading).toBe(true);
     expect(state.status).toBe("loading");
   });
 
@@ -48,7 +45,6 @@ describe("pokemonChainReducer", () => {
       },
     };
     const state = reducer(initialState, action);
-    expect(state.isLoading).toBe(false);
     expect(state.status).toBe("success");
     expect(state.pokemons.length).toBe(1);
   });
@@ -56,7 +52,6 @@ describe("pokemonChainReducer", () => {
   it("should handle fetchPokemonChainData.rejected", () => {
     const action = { type: fetchPokemonChainData.rejected.type };
     const state = reducer(initialState, action);
-    expect(state.isLoading).toBe(false);
     expect(state.status).toBe("failed");
   });
 });

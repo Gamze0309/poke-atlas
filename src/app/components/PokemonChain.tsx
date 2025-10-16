@@ -1,28 +1,10 @@
-import { useAppDispatch, useAppSelector } from "../hooks";
+import { useAppSelector } from "../hooks";
 import Link from "next/link";
-import { setSelectedPokemon } from "../redux/reducers/selectedPokemonReducer";
-import { fetchPokemonDetailData } from "../redux/reducers/pokemonDetailReducer";
-import { fetchPokemonChainData } from "../redux/reducers/pokemonChainReducer";
 
 const PokemonChain = () => {
   const pokemonData = useAppSelector(
     (state) => state.pokemonChainReducer.pokemons
   );
-  const dispatch = useAppDispatch();
-
-  const handleClick = (e: React.MouseEvent, pokemon: PokemonType) => {
-    dispatch(
-      setSelectedPokemon({
-        pokemon: {
-          name: pokemon.name,
-          image: pokemon.image,
-          typeList: pokemon.typeList,
-        },
-      })
-    );
-    dispatch(fetchPokemonDetailData(pokemon.name));
-    dispatch(fetchPokemonChainData(pokemon.name));
-  };
 
   return (
     <div className="row pokemon-detail pokemon-info">
@@ -31,7 +13,6 @@ const PokemonChain = () => {
           <Link
             className="pokemon-chain-card"
             href={`/pokemonDetail/${encodeURIComponent(pokemon.name)}`}
-            onClick={(e) => handleClick(e, pokemon)}
           >
             <img
               className="pokemon-chain-pokemon-image"

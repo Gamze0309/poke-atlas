@@ -6,21 +6,12 @@ import PokemonStatistics from "../../components/PokemonStatistics";
 import "../../css/pokemonDetail.css";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import Loading from "@/app/components/Loading";
-import { useParams } from "next/navigation";
-import { useEffect } from "react";
-import {
-  clearSelectedPokemon,
-  fetchPokemonData,
-} from "@/app/redux/reducers/selectedPokemonReducer";
-import {
-  fetchPokemonDetailData,
-  setPokemonDetailInitialState,
-} from "@/app/redux/reducers/pokemonDetailReducer";
-import {
-  fetchPokemonChainData,
-  setPokemonChainInitialState,
-} from "@/app/redux/reducers/pokemonChainReducer";
 import Header from "@/app/components/Header";
+import { useEffect } from "react";
+import { fetchPokemonData } from "@/app/redux/reducers/selectedPokemonReducer";
+import { fetchPokemonDetailData } from "@/app/redux/reducers/pokemonDetailReducer";
+import { fetchPokemonChainData } from "@/app/redux/reducers/pokemonChainReducer";
+import { useParams } from "next/navigation";
 
 const PokemonDetailPage = () => {
   const param = useParams<{ pokemonName: string }>();
@@ -51,13 +42,9 @@ const PokemonDetailPage = () => {
         <div className="row pokemon-detail-row">
           <div className="col-md-4">
             <h4>Pokemon</h4>
-            {pokemonData.isLoading || pokemonData.status === "failed" ? (
-              <Loading />
-            ) : (
-              <Pokemon />
-            )}
+            {pokemonData.status !== "success" ? <Loading /> : <Pokemon />}
             <h4>Abilities</h4>
-            {pokemonDetail.isLoading || pokemonDetail.status === "failed" ? (
+            {pokemonDetail.status !== "success" ? (
               <Loading />
             ) : (
               <PokemonAbilities />
@@ -65,17 +52,13 @@ const PokemonDetailPage = () => {
           </div>
           <div className="col-md-8">
             <h4>Statistics</h4>
-            {pokemonDetail.isLoading || pokemonDetail.status === "failed" ? (
+            {pokemonDetail.status !== "success" ? (
               <Loading />
             ) : (
               <PokemonStatistics />
             )}
             <h4>Evolution</h4>
-            {pokemonChain.isLoading || pokemonChain.status === "failed" ? (
-              <Loading />
-            ) : (
-              <PokemonChain />
-            )}
+            {pokemonChain.status !== "success" ? <Loading /> : <PokemonChain />}
           </div>
         </div>
       </div>

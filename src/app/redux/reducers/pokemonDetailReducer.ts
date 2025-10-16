@@ -21,7 +21,6 @@ type PokemonDetail = {
   abilityList: AbilityList[];
   baseStatList: BaseStats[];
   status: string;
-  isLoading: boolean;
 };
 
 const pokemonDetailInitialState: PokemonDetail = {
@@ -31,7 +30,6 @@ const pokemonDetailInitialState: PokemonDetail = {
   abilityList: [],
   baseStatList: [],
   status: "idle",
-  isLoading: true,
 };
 
 export const fetchPokemonDetailData = createAsyncThunk(
@@ -98,7 +96,6 @@ const pokemonDetailSlice = createSlice({
       state.abilityList = [];
       state.baseStatList = [];
       state.status = "idle";
-      state.isLoading = true;
     },
   },
   extraReducers: (builder) => {
@@ -108,10 +105,9 @@ const pokemonDetailSlice = createSlice({
       state.abilityList = action.payload.abilityList;
       state.baseStatList = action.payload.baseStatList;
       state.description = action.payload.description;
-      (state.status = "success"), (state.isLoading = false);
+      state.status = "success";
     });
     builder.addCase(fetchPokemonDetailData.pending, (state, action) => {
-      state.isLoading = true;
       state.status = "loading";
     });
     builder.addCase(fetchPokemonDetailData.rejected, (state, action) => {
