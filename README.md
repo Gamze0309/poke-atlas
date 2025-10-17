@@ -51,7 +51,7 @@ Make sure you have installed:
 ### ⚙️ Installation
 
 ```bash
-git clone https://github.com/yourusername/poke-atlas.git
+git clone https://github.com/gamze0309/poke-atlas.git
 cd poke-atlas
 npm install
 ```
