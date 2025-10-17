@@ -86,6 +86,7 @@ You can view the pipeline status with this badge:
 
 ## 📚 Project Structure
 
+```
 poke-atlas/
 ├── public/ # Static assets
 ├── src/
@@ -100,9 +101,7 @@ poke-atlas/
 ├── package.json
 ├── tsconfig.json
 └── README.md
-
 ```
-
 ---
 
 ## 🧠 How It Works
@@ -113,4 +112,4 @@ poke-atlas/
    - `/main/[pageNumber]` → paginated Pokémon list
    - `/pokemonDetail/[pokemonName]` → Pokémon details page
 4. **CI/CD:** GitHub Actions automatically tests, lints, and builds every commit to ensure stability.
-```
+
