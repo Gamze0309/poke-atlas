@@ -7,33 +7,11 @@ import "../../css/pokemonDetail.css";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import Loading from "@/app/components/Loading";
 import Header from "@/app/components/Header";
-import { useEffect } from "react";
-import { fetchPokemonData } from "@/app/redux/reducers/selectedPokemonReducer";
-import { fetchPokemonDetailData } from "@/app/redux/reducers/pokemonDetailReducer";
-import { fetchPokemonChainData } from "@/app/redux/reducers/pokemonChainReducer";
-import { useParams } from "next/navigation";
 
 const PokemonDetailPage = () => {
-  const param = useParams<{ pokemonName: string }>();
-  let pokemonName = param.pokemonName;
-
-  const dispatch = useAppDispatch();
-
   const pokemonData = useAppSelector((state) => state.selectedPokemonReducer);
-
   const pokemonDetail = useAppSelector((state) => state.pokemonDetailReducer);
   const pokemonChain = useAppSelector((state) => state.pokemonChainReducer);
-
-  useEffect(() => {
-    if (
-      pokemonName != "undefined" &&
-      pokemonName != pokemonData?.pokemon?.name
-    ) {
-      dispatch(fetchPokemonData(pokemonName));
-      dispatch(fetchPokemonDetailData(pokemonName));
-      dispatch(fetchPokemonChainData(pokemonName));
-    }
-  }, [param.pokemonName, dispatch]);
 
   return (
     <>
